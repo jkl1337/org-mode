@@ -15894,7 +15894,7 @@ Don't touch the rest."
     ;; lead time is specified.
     (floor (* (string-to-number (match-string 1 ts))
 	      (cdr (assoc (match-string 2 ts)
-			  '(("d" . 1)    ("w" . 7)
+			  '(("h" . 0.041667) ("d" . 1) ("w" . 7)
 			    ("m" . 30.4) ("y" . 365.25)))))))
    ;; go for the default.
    (t org-deadline-warning-days)))
