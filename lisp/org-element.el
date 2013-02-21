@@ -214,17 +214,6 @@ regexp matching one object can also match the other object.")
 	 table-cell underline)
   "List of recursive object types.")
 
-(defvar org-element-block-name-alist
-  '(("CENTER" . org-element-center-block-parser)
-    ("COMMENT" . org-element-comment-block-parser)
-    ("EXAMPLE" . org-element-example-block-parser)
-    ("QUOTE" . org-element-quote-block-parser)
-    ("SRC" . org-element-src-block-parser)
-    ("VERSE" . org-element-verse-block-parser))
-  "Alist between block names and the associated parsing function.
-Names must be uppercase.  Any block whose name has no association
-is parsed with `org-element-special-block-parser'.")
-
 (defconst org-element-link-type-is-file
   '("file" "file+emacs" "file+sys" "docview")
   "List of link types equivalent to \"file\".

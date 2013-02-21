@@ -23104,8 +23104,21 @@ To get rid of the restriction, use \\[org-agenda-remove-restriction-lock]."
 ;;; Fixes and Hacks for problems with other packages
 
 ;; Make flyspell not check words in links, to not mess up our keymap
-(defvar org-element-affiliated-keywords) ; From org-element.el
-(defvar org-element-block-name-alist)	 ; From org-element.el
+(defvar org-element-affiliated-keywords
+  '("CAPTION" "DATA" "HEADER" "HEADERS" "LABEL" "NAME" "PLOT" "RESNAME" "RESULT"
+    "RESULTS" "SOURCE" "SRCNAME" "TBLNAME")) ; From org-element.el
+
+(defvar org-element-block-name-alist
+  '(("CENTER" . org-element-center-block-parser)
+    ("COMMENT" . org-element-comment-block-parser)
+    ("EXAMPLE" . org-element-example-block-parser)
+    ("QUOTE" . org-element-quote-block-parser)
+    ("SRC" . org-element-src-block-parser)
+    ("VERSE" . org-element-verse-block-parser))
+  "Alist between block names and the associated parsing function.
+Names must be uppercase.  Any block whose name has no association
+is parsed with `org-element-special-block-parser'.")
+
 (defun org-mode-flyspell-verify ()
   "Don't let flyspell put overlays at active buttons, or on
    {todo,all-time,additional-option-like}-keywords."
